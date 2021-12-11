@@ -61,10 +61,10 @@ public class FormDots extends JFrame implements Runnable, MouseListener {
                 double ny = (double) j / h * 8 - 0.5;
                 double[] outputs = nn.feedForward(new double[]{nx, ny});
                 double green = Math.max(0, Math.min(1, outputs[0] - outputs[1] + 0.5));
-                double blue = 1 - green;
-                green = 0.3 + green * 0.5;
-                blue = 0.5 + blue * 0.5;
-                int color = (100 << 16) | ((int)(green * 255) << 8) | (int)(blue * 255);
+                double orange = 1 - green;
+                green = 0.8 + green * 0.9;
+                orange = 0.8 + orange * 0.9;
+                int color = (200 << 16) | ((int)(green * 200) << 8) | (int)(orange * 230);
                 pimg.setRGB(i, j, color);
             }
         }
@@ -73,8 +73,8 @@ public class FormDots extends JFrame implements Runnable, MouseListener {
         for (Point p : points) {
             ig.setColor(Color.WHITE);
             ig.fillOval(p.x - 3, p.y - 3, 26, 26);
-            if (p.type == 0) ig.setColor(Color.GREEN);
-            else ig.setColor(Color.BLUE);
+            if (p.type == 0) ig.setColor(Color.BLACK);
+            else ig.setColor(Color.BLACK);
             ig.fillOval(p.x, p.y, 20, 20);
         }
         g.drawImage(img, 8, 30, w, h, this);
